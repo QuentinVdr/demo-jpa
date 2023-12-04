@@ -1,17 +1,19 @@
 package fr.epsi.b32324c2;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import fr.epsi.b32324c2.dal.ILivreDAO;
+import fr.epsi.b32324c2.dal.Impl.LivreDAOImpl;
+import fr.epsi.b32324c2.entities.Livre;
+
+import java.util.Optional;
 
 public class TestJPA {
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu-a1");
-        EntityManager entityManager = emf.createEntityManager();
+        ILivreDAO livreDAO = new LivreDAOImpl();
 
-        System.out.println(entityManager.isOpen()); // se connecte à la bdd
+        Optional<Livre> livreDAOById = livreDAO.getById(1);
+        System.out.println(livreDAOById);
 
-        entityManager.close();
-        emf.close();
+        livreDAO.insert(new Livre("titre", "auteur"));
+        System.out.println("enregistrer un nouveau livre");
     }
 }
