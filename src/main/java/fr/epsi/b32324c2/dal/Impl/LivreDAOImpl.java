@@ -38,4 +38,18 @@ public class LivreDAOImpl implements ILivreDAO {
         emf.close();
     }
 
+    @Override
+    public void update(int id, Livre livre) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu-a1");
+        EntityManager entityManager = emf.createEntityManager();
+
+        entityManager.getTransaction().begin();
+        Livre livreRead = entityManager.find(Livre.class, id);
+        livreRead.setTitre(livre.getTitre());
+        livreRead.setAuteur(livre.getAuteur());
+        entityManager.getTransaction().commit();
+
+        entityManager.close();
+        emf.close();
+    }
 }

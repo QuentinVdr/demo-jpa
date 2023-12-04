@@ -15,5 +15,8 @@ public class TestJPA {
 
         livreDAO.insert(new Livre("titre", "auteur"));
         System.out.println("enregistrer un nouveau livre");
+
+        livreDAO.update(5, new Livre(" Du plaisir dans la cuisine", "auteur"));
+        System.out.println("Livre 5 est modifier");
     }
 }

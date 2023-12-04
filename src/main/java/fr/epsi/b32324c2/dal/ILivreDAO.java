@@ -21,5 +21,12 @@ public interface ILivreDAO {
      */
     void insert(Livre livre);
 
-
+    /**
+     * Update a livre in the database
+     *
+     *
+     * @param id id of the livre to update
+     * @param livre the livre to update
+     */
+    void update(int id, Livre livre);
 }
