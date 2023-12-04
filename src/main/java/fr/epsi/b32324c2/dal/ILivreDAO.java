@@ -2,6 +2,7 @@ package fr.epsi.b32324c2.dal;
 
 import fr.epsi.b32324c2.entities.Livre;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ILivreDAO {
@@ -35,4 +36,11 @@ public interface ILivreDAO {
      * @param title title of the livre to get
      */
     Optional<Livre> getByTitle(String title);
+
+    /**
+     * Get a livre in the database by its author
+     *
+     * @param author title of the livre to get
+     */
+    List<Livre> getByAuthor(String author);
 }

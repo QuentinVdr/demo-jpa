@@ -6,6 +6,7 @@ import fr.epsi.b32324c2.entities.Livre;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.util.List;
 import java.util.Optional;
 
 public class LivreDAOImpl implements ILivreDAO {
@@ -69,5 +70,20 @@ public class LivreDAOImpl implements ILivreDAO {
             return Optional.empty();
         else
             return Optional.of(livre);
+    }
+
+    @Override
+    public List<Livre> getByAuthor(String author) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu-a1");
+        EntityManager entityManager = emf.createEntityManager();
+
+        List<Livre> livres = entityManager.createQuery("SELECT l FROM Livre l WHERE l.auteur = :auteur", Livre.class)
+                .setParameter("auteur", author)
+                .getResultList();
+
+        entityManager.close();
+        emf.close();
+
+        return livres;
     }
 }

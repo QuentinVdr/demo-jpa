@@ -4,6 +4,7 @@ import fr.epsi.b32324c2.dal.ILivreDAO;
 import fr.epsi.b32324c2.dal.Impl.LivreDAOImpl;
 import fr.epsi.b32324c2.entities.Livre;
 
+import java.util.List;
 import java.util.Optional;
 
 public class TestJPA {
@@ -21,5 +22,8 @@ public class TestJPA {
 
         Optional<Livre> libreByTitle = livreDAO.getByTitle("Vingt mille lieues sous les mers");
         System.out.println(libreByTitle);
+
+        List<Livre> libreByAuthor = livreDAO.getByAuthor("Jules Verne");
+        System.out.println(libreByAuthor);
     }
 }
