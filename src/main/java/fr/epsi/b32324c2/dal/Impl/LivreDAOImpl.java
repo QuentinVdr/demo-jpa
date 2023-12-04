@@ -86,4 +86,18 @@ public class LivreDAOImpl implements ILivreDAO {
 
         return livres;
     }
+
+    @Override
+    public void deleteById(int id) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu-a1");
+        EntityManager entityManager = emf.createEntityManager();
+
+        entityManager.getTransaction().begin();
+        Livre livre = entityManager.find(Livre.class, id);
+        entityManager.remove(livre);
+        entityManager.getTransaction().commit();
+
+        entityManager.close();
+        emf.close();
+    }
 }

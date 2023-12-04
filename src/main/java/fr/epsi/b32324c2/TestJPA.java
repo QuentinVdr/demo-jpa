@@ -25,5 +25,8 @@ public class TestJPA {
 
         List<Livre> libreByAuthor = livreDAO.getByAuthor("Jules Verne");
         System.out.println(libreByAuthor);
+
+        livreDAO.deleteById(9);
+        System.out.println("delete livre 9");
     }
 }

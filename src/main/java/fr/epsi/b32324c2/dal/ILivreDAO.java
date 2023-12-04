@@ -43,4 +43,11 @@ public interface ILivreDAO {
      * @param author title of the livre to get
      */
     List<Livre> getByAuthor(String author);
+
+    /**
+     * Delete a livre in the database
+     *
+     * @param id id of the livre to delete
+     */
+    void deleteById(int id);
 }
