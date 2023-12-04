@@ -18,5 +18,8 @@ public class TestJPA {
 
         livreDAO.update(5, new Livre(" Du plaisir dans la cuisine", "auteur"));
         System.out.println("Livre 5 est modifier");
+
+        Optional<Livre> libreByTitle = livreDAO.getByTitle("Vingt mille lieues sous les mers");
+        System.out.println(libreByTitle);
     }
 }

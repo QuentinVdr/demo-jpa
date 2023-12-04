@@ -24,9 +24,15 @@ public interface ILivreDAO {
     /**
      * Update a livre in the database
      *
-     *
      * @param id id of the livre to update
      * @param livre the livre to update
      */
     void update(int id, Livre livre);
+
+    /**
+     * Get a livre in the database by its title
+     *
+     * @param title title of the livre to get
+     */
+    Optional<Livre> getByTitle(String title);
 }
