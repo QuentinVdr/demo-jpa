@@ -28,5 +28,8 @@ public class TestJPA {
 
         livreDAO.deleteById(9);
         System.out.println("delete livre 9");
+
+        List<Livre> allLivre = livreDAO.getAll();
+        System.out.println(allLivre);
     }
 }

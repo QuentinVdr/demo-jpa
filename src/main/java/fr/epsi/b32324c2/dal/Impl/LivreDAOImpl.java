@@ -100,4 +100,18 @@ public class LivreDAOImpl implements ILivreDAO {
         entityManager.close();
         emf.close();
     }
+
+    @Override
+    public List<Livre> getAll() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu-a1");
+        EntityManager entityManager = emf.createEntityManager();
+
+        List<Livre> livres = entityManager.createQuery("SELECT l FROM Livre l", Livre.class)
+                .getResultList();
+
+        entityManager.close();
+        emf.close();
+
+        return livres;
+    }
 }

@@ -50,4 +50,11 @@ public interface ILivreDAO {
      * @param id id of the livre to delete
      */
     void deleteById(int id);
+
+    /**
+     * Get all livres in the database
+     *
+     * @return all livres
+     */
+    List<Livre> getAll();
 }
