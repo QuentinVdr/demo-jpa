@@ -12,13 +12,13 @@ public class Client {
     private int id;
 
     @Column(name = "nom")
-    String nom;
+    private String nom;
 
     @Column(name = "prenom")
-    String prenom;
+    private String prenom;
 
     @OneToMany(mappedBy = "client")
-    Set<Emprunt> emprunts;
+    private Set<Emprunt> emprunts;
 
     public int getId() {
         return id;

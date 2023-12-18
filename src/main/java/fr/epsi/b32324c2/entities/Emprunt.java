@@ -13,24 +13,24 @@ public class Emprunt {
     private int id;
 
     @Column(name = "date_debut")
-    Date dateDebut;
+    private Date dateDebut;
 
     @Column(name = "date_fin", nullable = true)
-    Date dateFin;
+    private Date dateFin;
 
     @Column(name = "delai")
-    int delai;
+    private int delai;
 
     @ManyToMany
     @JoinTable(name = "compo",
             joinColumns = @JoinColumn(name = "id_emp", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "id_liv", referencedColumnName = "id")
     )
-    Set<Livre> livres;
+    private Set<Livre> livres;
 
     @ManyToOne
     @JoinColumn(name = "id_client")
-    Client client;
+    private Client client;
 
     public int getId() {
         return id;
