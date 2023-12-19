@@ -14,7 +14,11 @@ public class Compte {
 
     private double solde;
 
-    @ManyToMany(mappedBy = "comptes")
+    @ManyToMany
+    @JoinTable(name = "compte_client",
+            joinColumns = @JoinColumn(name = "id_compte", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "id_client", referencedColumnName = "id")
+    )
     private Set<Client> clients;
 
     @OneToMany(mappedBy = "compte")
