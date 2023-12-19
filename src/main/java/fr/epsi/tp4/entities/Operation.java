@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "operation")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Operation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +27,17 @@ public class Operation {
         this.date = date;
         this.montant = montant;
         this.motif = motif;
+    }
+
+    public Operation(double montant, String motif) {
+        this.montant = montant;
+        this.motif = motif;
+    }
+
+    public Operation(double montant, String motif, Compte compte) {
+        this.montant = montant;
+        this.motif = motif;
+        this.compte = compte;
     }
 
     public Operation(LocalDateTime date, double montant, String motif, Compte compte) {

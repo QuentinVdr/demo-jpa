@@ -21,7 +21,10 @@
         <class>fr.epsi.tp4.entities.Banque</class>
         <class>fr.epsi.tp4.entities.Client</class>
         <class>fr.epsi.tp4.entities.Compte</class>
+        <class>fr.epsi.tp4.entities.LivretA</class>
+        <class>fr.epsi.tp4.entities.AssuranceVie</class>
         <class>fr.epsi.tp4.entities.Operation</class>
+        <class>fr.epsi.tp4.entities.Virement</class>
         <properties>
             <!-- desactiver l'autodetection des classes de type @Entity -->
             <property name="hibernate.archive.autodetection" value=""/>

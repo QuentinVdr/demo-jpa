@@ -4,6 +4,7 @@ import fr.epsi.tp4.entities.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 public class Main {
@@ -24,17 +25,28 @@ public class Main {
         Client client = new Client("Doe", "John", java.time.LocalDate.now(), adresse, banque);
         // Persist the client
         entityManager.persist(client);
-
-        // Create an account
+        // Get the client with id 1
         Client clientFind = entityManager.find(Client.class, 1);
-        Compte compte = new Compte("123456789", 100000, Set.of(clientFind));
-        // Persist the account
-        entityManager.persist(compte);
 
-        // Create operation
-        Operation operation = new Operation(java.time.LocalDateTime.now(), 100, "Virement", compte);
-        // Persist the operation
+        // Create a livret A account
+        LivretA livretA = new LivretA("123456789", 100000, Set.of(clientFind), 1.5);
+        // Persist the livret A account
+        entityManager.persist(livretA);
+
+        // Create a life assurance account
+        AssuranceVie assuranceVie = new AssuranceVie("987654321", 100000, Set.of(clientFind), 1.5, LocalDateTime.now());
+        // Persist the livret A account
+        entityManager.persist(assuranceVie);
+
+        // Create an operation
+        Operation operation = new Operation(java.time.LocalDateTime.now(), 100, "Dépense", livretA);
+        // Persist the virement operation
         entityManager.persist(operation);
+
+        // Create a virement operation
+        Virement virement = new Virement(LocalDateTime.now(), 100, "Dépense", livretA, "John Doe");
+        // Persist the virement operation
+        entityManager.persist(virement);
 
         // Commit the transaction
         entityManager.getTransaction().commit();

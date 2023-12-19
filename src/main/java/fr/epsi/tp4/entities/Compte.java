@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "compte")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Compte {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,7 @@ public class Compte {
     private Set<Client> clients;
 
     @OneToMany(mappedBy = "compte")
-    private Set<Operation> operations;
+    private Set<Virement> virements;
 
     public Compte() {
     }
@@ -70,11 +70,11 @@ public class Compte {
         this.clients = clients;
     }
 
-    public Set<Operation> getOperations() {
-        return operations;
+    public Set<Virement> getVirements() {
+        return virements;
     }
 
-    public void setOperations(Set<Operation> operations) {
-        this.operations = operations;
+    public void setVirements(Set<Virement> virements) {
+        this.virements = virements;
     }
 }
